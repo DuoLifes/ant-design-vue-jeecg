@@ -5,7 +5,7 @@
     :class="[fixedHeader && 'ant-header-fixedHeader', sidebarOpened ? 'ant-header-side-opened' : 'ant-header-side-closed', ]"
     :style="{ padding: '0' }">
 
-    <div v-if="mode === 'sidemenu'" class="header" :class="theme">
+    <div v-if="mode === 'sidemenu'" :class="['top-nav-header-index', theme]">
       <a-icon
         v-if="device==='mobile'"
         class="trigger"
@@ -17,8 +17,14 @@
         :type="collapsed ? 'menu-unfold' : 'menu-fold'"
         @click="toggle"/>
 
-      <span v-if="device === 'desktop'">欢迎进入 Jeecg-Boot 企业级低代码平台</span>
-      <span v-else>Jeecg-Boot</span>
+        <a-menu  mode="horizontal" :theme="theme" v-model:selectedKeys="current" @select="selectHeader" class="top-menu-dark">
+          <a-menu-item  v-for="m in menus" :key="m.id">
+            {{ m.meta.title }}
+          </a-menu-item>
+        </a-menu>
+
+      <!-- <span v-if="device === 'desktop'">欢迎进入 Jeecg-Boot 企业级低代码平台</span>
+      <span v-else>Jeecg-Boot</span> -->
 
       <user-menu :theme="theme"/>
     </div>
@@ -99,6 +105,7 @@
           topSmenuStyle: {}
         },
         chatStatus: '',
+        current:[]
       }
     },
     watch: {
@@ -115,16 +122,37 @@
         }
       }
     },
+
     //update-end--author:sunjianlei---date:20190508------for: 顶部导航栏过长时显示更多按钮-----
     mounted() {
+      this.getRouter()
       window.addEventListener('scroll', this.handleScroll)
       //update-begin--author:sunjianlei---date:20190508------for: 顶部导航栏过长时显示更多按钮-----
       if (this.mode === 'topmenu') {
         this.buildTopMenuStyle()
       }
+      this.$eventBus.$on('change_tabs', (key)=>{
+        this.menus.forEach(element => {
+          if(key.indexOf(element.path)>-1){
+            this.current = [element.id]
+            this.$emit('updateLeftMenu',{key:element.id},true)
+          }
+        });
+      })
       //update-end--author:sunjianlei---date:20190508------for: 顶部导航栏过长时显示更多按钮-----
     },
     methods: {
+      getRouter(){
+        this.menus.forEach(element => {
+          if(this.$route.path.indexOf(element.path)>-1){
+            this.current = [element.id]
+            this.$emit('updateLeftMenu',{key:element.id},true)
+          }
+        });
+      },
+      selectHeader(item){
+        this.$emit('updateLeftMenu',item,false)
+      },
       handleScroll() {
         if (this.autoHideHeader) {
           let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
@@ -189,6 +217,7 @@
       }
       .trigger {
         line-height: 64px;
+        color: #fff;
         &:hover {
           background: rgba(0, 0, 0, 0.05);
         }
@@ -219,6 +248,12 @@
 
   .ant-layout-header {
     height: @height;
+    line-height: @height;
+  }
+  .top-menu-dark{
+    display: inline-block;
+    height: @height;
+    position: absolute;
     line-height: @height;
   }
 

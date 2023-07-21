@@ -207,6 +207,7 @@
       // update-end-author:sunjianlei date:20200120 for: 动态更改页面标题
 
       changePage(key) {
+        this.$eventBus.$emit('change_tabs',key)
         this.activePage = key
       },
       tabCallBack() {
@@ -231,7 +232,7 @@
           this.$message.warning('这是最后一页，不能再关闭了啦')
           return
         }
-        console.log("this.pageList ",this.pageList );
+        // console.log("this.pageList ",this.pageList );
         let removeRoute = this.pageList.filter(item => item.fullPath == key)
         this.pageList = this.pageList.filter(item => item.fullPath !== key)
         let index = this.linkList.indexOf(key)
@@ -244,8 +245,8 @@
         let cacheRouterArray = Vue.ls.get(CACHE_INCLUDED_ROUTES) || []
         if (removeRoute && removeRoute[0]) {
           let componentName = removeRoute[0].meta.componentName
-          console.log("key: ", key);
-          console.log("componentName: ", componentName);
+          // console.log("key: ", key);
+          // console.log("componentName: ", componentName);
           if(cacheRouterArray.includes(componentName)){
             cacheRouterArray.splice(cacheRouterArray.findIndex(item => item === componentName), 1)
             Vue.ls.set(CACHE_INCLUDED_ROUTES, cacheRouterArray)

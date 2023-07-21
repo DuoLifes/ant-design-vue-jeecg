@@ -62,6 +62,7 @@ Vue.use(preview)
 Vue.use(vueBus);
 Vue.use(JeecgComponents);
 Vue.use(VueAreaLinkage);
+Vue.prototype.$eventBus = new Vue()
 
 SSO.init(() => {
   main()

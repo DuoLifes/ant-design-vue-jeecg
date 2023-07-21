@@ -21,11 +21,11 @@
           :collapsed="false"
           :collapsible="true"></side-menu>
       </a-drawer>
-
+      <!-- 左侧菜单################################ -->
       <side-menu
         v-show="device === 'desktop'"
         mode="inline"
-        :menus="menus"
+        :menus="subMenu"
         @menuSelect="myMenuSelect"
         @updateMenuTitle="handleUpdateMenuTitle"
         :theme="navTheme"
@@ -58,14 +58,15 @@
       :class="[layoutMode, `content-width-${contentWidth}`]"
       :style="{ paddingLeft: fixSiderbar && isDesktop() ? `${sidebarOpened ? 200 : 80}px` : '0' }">
       <!-- layout header -->
+      <!-- 顶栏菜单################################ -->
       <global-header
         :mode="layoutMode"
-        :menus="menus"
+        :menus="firMenu"
         :theme="navTheme"
         :collapsed="collapsed"
         :device="device"
         @toggle="toggle"
-        @updateMenuTitle="handleUpdateMenuTitle"
+        @updateLeftMenu="updateLeftMenu"
       />
 
       <!-- layout content -->
@@ -114,7 +115,9 @@
       return {
         collapsed: false,
         activeMenu:{},
-        menus: []
+        menus: [],
+        firMenu:[],
+        subMenu:[]
       }
     },
     computed: {
@@ -134,20 +137,37 @@
       //--update-begin----author:scott---date:20190320------for:根据后台菜单配置，判断是否路由菜单字段，动态选择是否生成路由（为了支持参数URL菜单）------
       //this.menus = this.mainRouters.find((item) => item.path === '/').children;
       this.menus = this.permissionMenuList
-      
+      this.menus.forEach(element => {
+        let obj = JSON.parse(JSON.stringify(element))
+        this.firMenu.push(obj)
+      })
       //--update-begin----author:liusq---date:20210223------for:关于测边菜单遮挡内容问题详细说明 #2255
       this.collapsed=!this.sidebarOpened;
       //--update-begin----author:liusq---date:20210223------for:关于测边菜单遮挡内容问题详细说明 #2255
   
       // 根据后台配置菜单，重新排序加载路由信息
-      //console.log('----加载菜单逻辑----')
-      //console.log(this.mainRouters)
-      //console.log(this.permissionMenuList)
-      //console.log('----navTheme------'+this.navTheme)
+      // console.log('----加载菜单逻辑----')
+      // console.log(this.mainRouters)
+      // console.log(this.permissionMenuList)
+      // console.log('----navTheme------'+this.navTheme)
       //--update-end----author:scott---date:20190320------for:根据后台菜单配置，判断是否路由菜单字段，动态选择是否生成路由（为了支持参数URL菜单）------
     },
     methods: {
       ...mapActions(['setSidebar']),
+      updateLeftMenu(item,isCreate){
+        this.menus.forEach(element => {
+          if(element.id === item.key){
+            this.subMenu = [JSON.parse(JSON.stringify(element))]
+              if(!isCreate){
+                if(element.children){
+                this.$router.push({ path: element.children[0].path }) 
+              } else {
+                this.$router.push({ path: element.path }) 
+              }
+            }
+          }
+        });
+      },
       toggle() {
         this.collapsed = !this.collapsed
         this.setSidebar(!this.collapsed)
