@@ -105,7 +105,8 @@
           topSmenuStyle: {}
         },
         chatStatus: '',
-        current:[]
+        current:[],
+        cacheMenu:[]
       }
     },
     watch: {
@@ -125,30 +126,48 @@
 
     //update-end--author:sunjianlei---date:20190508------for: 顶部导航栏过长时显示更多按钮-----
     mounted() {
-      this.getRouter()
+      this.getParentUrl()
+      this.getRouter(this.cacheMenu,this.$route.path)
       window.addEventListener('scroll', this.handleScroll)
       //update-begin--author:sunjianlei---date:20190508------for: 顶部导航栏过长时显示更多按钮-----
       if (this.mode === 'topmenu') {
         this.buildTopMenuStyle()
       }
       this.$eventBus.$on('change_tabs', (key)=>{
-        this.menus.forEach(element => {
-          if(key.indexOf(element.path)>-1){
-            this.current = [element.id]
-            this.$emit('updateLeftMenu',{key:element.id},true)
-          }
-        });
+        this.getRouter(this.cacheMenu,key)
       })
       //update-end--author:sunjianlei---date:20190508------for: 顶部导航栏过长时显示更多按钮-----
     },
     methods: {
-      getRouter(){
-        this.menus.forEach(element => {
-          if(this.$route.path.indexOf(element.path)>-1){
-            this.current = [element.id]
-            this.$emit('updateLeftMenu',{key:element.id},true)
+      getRouter(list,path){
+        list.forEach(element => {
+          if(path === element.path){
+            this.current = [element.parentId]
+            this.$emit('updateLeftMenu',{key:element.parentId},true)
+          } else {
+            if(element.children){
+              this.getRouter(element.children,path)
+            }
           }
         });
+      },
+      getParentUrl(){
+        this.menus.forEach(element => {
+          let obj = JSON.parse(JSON.stringify(element))
+          obj.parentId = obj.id
+          if(obj.children){
+            this.getTreeNode(obj)
+          }
+          this.cacheMenu.push(obj)
+        })
+      },
+      getTreeNode(obj){
+        obj.children.forEach(element => {
+          element.parentId = obj.parentId
+          if(element.children){
+            this.getTreeNode(element)
+          }
+        })
       },
       selectHeader(item){
         this.$emit('updateLeftMenu',item,false)
