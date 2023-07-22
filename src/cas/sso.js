@@ -6,7 +6,7 @@ import store from '@/store'
  */
 const init = (callback) => {
   if (process.env.VUE_APP_SSO == 'true') {
-    console.log("-------单点登录开始-------");
+    // console.log("-------单点登录开始-------");
     let token = Vue.ls.get(ACCESS_TOKEN);
     let st = getUrlParam("ticket");
     let sevice = "http://" + window.location.host + "/";
@@ -20,7 +20,7 @@ const init = (callback) => {
         window.location.href = window._CONFIG['casPrefixUrl'] + "/login?service=" + serviceUrl;
       }
     }
-    console.log("-------单点登录结束-------");
+    // console.log("-------单点登录结束-------");
   }else{
     callback && callback()
   }

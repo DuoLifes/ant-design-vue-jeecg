@@ -60,7 +60,7 @@
         }
       },
       componentDisabled(){
-        console.log('333',this.cellProps)
+        // console.log('333',this.cellProps)
         if(this.cellProps.disabled==true){
           return true
         }
@@ -126,8 +126,8 @@
         this.$refs.selectModal.showModal()
       },
       selectOK(rows, idstr) {
-        console.log("当前选中用户", rows)
-        console.log("当前选中用户ID", idstr)
+        // console.log("当前选中用户", rows)
+        // console.log("当前选中用户ID", idstr)
         if (!rows) {
           this.userNames = ''
           this.userIds = ''

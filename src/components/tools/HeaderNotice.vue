@@ -154,13 +154,13 @@
               this.msg2Title = "系统消息(" + res.result.sysMsgTotal + ")";
             }
           }).catch(error => {
-            console.log("系统消息通知异常",error);//这行打印permissionName is undefined
+            // console.log("系统消息通知异常",error);//这行打印permissionName is undefined
             this.stopTimer = true;
-            console.log("清理timer");
+            // console.log("清理timer");
           });
         } catch (err) {
           this.stopTimer = true;
-          console.log("通知异常",err);
+          // console.log("通知异常",err);
         }
       },
       fetchNotice () {
@@ -214,16 +214,16 @@
         this.websock.onclose = this.websocketOnclose;
       },
       websocketOnopen: function () {
-        console.log("WebSocket连接成功");
+        // console.log("WebSocket连接成功");
         //心跳检测重置
         //this.heartCheck.reset().start();
       },
       websocketOnerror: function (e) {
-        console.log("WebSocket连接发生错误，第%s次",this.wsConnectErrorTime);
+        // console.log("WebSocket连接发生错误，第%s次",this.wsConnectErrorTime);
 
         this.wsConnectErrorTime = this.wsConnectErrorTime + 1;
         if(this.wsConnectErrorTime>5){
-          console.log("WebSocket连接错误超过5次，就不再重新连了！");
+          // console.log("WebSocket连接错误超过5次，就不再重新连了！");
           this.lockReconnect = true
           return;
         }
@@ -231,7 +231,7 @@
         this.reconnect();
       },
       websocketOnmessage: function (e) {
-        console.log("-----接收消息-------",e.data);
+        // console.log("-----接收消息-------",e.data);
         var data = eval("(" + e.data + ")"); //解析对象
         this.voiceBroadcast(data.msgTxt)
         if(data.cmd == "topic"){
@@ -245,9 +245,9 @@
         //this.heartCheck.reset().start();
       },
       websocketOnclose: function (e) {
-        console.log("connection closed (" + e + ")");
+        // console.log("connection closed (" + e + ")");
         if(e){
-          console.log("connection closed (" + e.code + ")");
+          // console.log("connection closed (" + e.code + ")");
         }
         this.reconnect();
       },
@@ -255,7 +255,7 @@
         try {
           this.websock.send(text);
         } catch (err) {
-          console.log("send failed (" + err.code + ")");
+          // console.log("send failed (" + err.code + ")");
         }
       },
       //语音播报系统通知
@@ -293,7 +293,7 @@
         that.lockReconnect = true;
         //没连接上会一直重连，设置延迟避免请求过多
         setTimeout(function () {
-          console.info("尝试重连...");
+          // console.info("尝试重连...");
           that.initWebSocket();
           that.lockReconnect = false;
         }, 20000);

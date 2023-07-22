@@ -251,7 +251,7 @@
           }
         }).catch(e=>{
           this.$message.warn("刷新缓存失败！");
-          console.log("刷新失败",e)
+          // console.log("刷新失败",e)
         })
       }
       /*update_end author:liushaoqian date:20200507 for: 刷新缓存*/

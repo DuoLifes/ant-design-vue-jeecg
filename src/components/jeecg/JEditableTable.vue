@@ -2654,7 +2654,7 @@
             this.$set(column, 'options', newOptions)
           } else {
             console.group(`JEditableTable 查询字典(${column.dictCode})发生异常`)
-            console.log(res.message)
+            // console.log(res.message)
             console.groupEnd()
           }
         })
@@ -2667,7 +2667,7 @@
       /** 辅助方法：打印日志 */
       log() {
         if (this.$attrs.logger) {
-          console.log.apply(null, arguments)
+          // console.log.apply(null, arguments)
         }
       },
 

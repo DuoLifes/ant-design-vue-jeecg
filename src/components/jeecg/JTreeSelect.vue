@@ -205,7 +205,7 @@
             }
             this.treeData = [...res.result]
           }else{
-            console.log("数根节点查询结果-else",res)
+            // console.log("数根节点查询结果-else",res)
           }
         })
       },
@@ -223,7 +223,7 @@
 
       },
       onSearch(value){
-        console.log(value)
+        // console.log(value)
       },
       getCurrTreeData(){
         return this.treeData

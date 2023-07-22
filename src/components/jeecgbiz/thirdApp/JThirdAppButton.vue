@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     handleMenuClick() {
-      console.log(arguments)
+      // console.log(arguments)
     },
     onToApp(e) {
       this.doSync(e.type, '/toApp')

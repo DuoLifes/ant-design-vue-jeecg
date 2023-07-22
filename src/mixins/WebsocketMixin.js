@@ -13,7 +13,7 @@ export const WebsocketMixin = {
   methods:{
     initWebSocket: function () {
       let token = Vue.ls.get(ACCESS_TOKEN)
-      console.log("------------WebSocket连接成功");
+      // console.log("------------WebSocket连接成功");
       // WebSocket与普通的请求所用协议有所不同，ws等同于http，wss等同于https
       var userId = store.getters.userInfo.id;
       if(!this.socketUrl.startsWith('/')){
@@ -32,7 +32,7 @@ export const WebsocketMixin = {
       this.websock.onclose = this.websocketOnclose;
     },
     websocketOnopen: function () {
-      console.log("WebSocket连接成功");
+      // console.log("WebSocket连接成功");
     },
     websocketOnerror: function (e) {
       console.log("WebSocket连接发生错误");
@@ -55,7 +55,7 @@ export const WebsocketMixin = {
       that.lockReconnect = true;
       //没连接上会一直重连，设置延迟避免请求过多
       setTimeout(function () {
-        console.info("尝试重连...");
+        // console.info("尝试重连...");
         that.initWebSocket();
         that.lockReconnect = false;
       }, 5000);

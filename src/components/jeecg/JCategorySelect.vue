@@ -111,7 +111,7 @@
             }
             this.treeData = [...res.result]
           }else{
-            console.log("树一级节点查询结果-else",res)
+            // console.log("树一级节点查询结果-else",res)
           }
         })
       },

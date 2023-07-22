@@ -64,7 +64,7 @@ const vs = {
       this.ws.onmessage = this.on.message.bind(this)
       this.ws.onclose = this.on.close.bind(this)
 
-      console.log('this.ws: ', this.ws)
+      // console.log('this.ws: ', this.ws)
     }
   },
 
@@ -131,7 +131,7 @@ const vs = {
         this.ws.close()
       }
       this.ws = null
-      console.info('【VXEWebSocket】尝试重连...')
+      // console.info('【VXEWebSocket】尝试重连...')
       this.initialWebSocket()
       this.lockReconnect = false
     }, 5000)
@@ -139,7 +139,7 @@ const vs = {
 
   on: {
     open() {
-      console.log('【VXEWebSocket】连接成功')
+      // console.log('【VXEWebSocket】连接成功')
       this.heartCheck.start()
     },
     error(e) {

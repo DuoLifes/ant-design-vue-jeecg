@@ -112,7 +112,7 @@
           if (!err) {
             that.confirmLoading = true;
             let params = Object.assign({username:this.username},values)
-            console.log("修改密码提交数据",params)
+            // console.log("修改密码提交数据",params)
             putAction(this.url,params).then((res)=>{
               if(res.success){
                 console.log(res)

@@ -57,13 +57,13 @@ export default {
       });
     },
     pageSize(val) {
-      console.log('pageSize:', val)
+      // console.log('pageSize:', val)
       Object.assign(this.localPagination, {
         pageSize: val
       });
     },
     showSizeChanger(val) {
-      console.log('showSizeChanger', val)
+      // console.log('showSizeChanger', val)
       Object.assign(this.localPagination, {
         showSizeChanger: val
       });

@@ -209,7 +209,7 @@
       },
       handleDelete(file){
         //如有需要新增 删除逻辑
-        console.log(file)
+        // console.log(file)
       },
       handleCancel() {
         this.close();

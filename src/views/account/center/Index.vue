@@ -29,11 +29,11 @@
             <div>
               <template v-for="(tag, index) in tags">
                 <a-tooltip v-if="tag.length > 20" :key="tag" :title="tag">
-                  <a-tag :key="tag" :closable="index !== 0" :afterClose="() => handleTagClose(tag)">
+                  <a-tag :key="tag" :closable="index !== 0" :close="() => handleTagClose(tag)">
                     {{ `${tag.slice(0, 20)}...` }}
                   </a-tag>
                 </a-tooltip>
-                <a-tag v-else :key="tag" :closable="index !== 0" :afterClose="() => handleTagClose(tag)">{{ tag }}</a-tag>
+                <a-tag v-else :key="tag" :closable="index !== 0" :close="() => handleTagClose(tag)">{{ tag }}</a-tag>
               </template>
               <a-input
                 v-if="tagInputVisible"

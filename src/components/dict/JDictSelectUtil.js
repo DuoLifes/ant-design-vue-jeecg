@@ -134,7 +134,7 @@ export async function getDictItems(dictCode, params) {
     return await ajaxGetDictItems(dictCode, params).then(({success, result}) => {
       if (success) {
         let res = result.map(item => ({...item, label: item.text}))
-        console.log('------- 从DB中获取到了字典-------dictCode : ', dictCode, res)
+        // console.log('------- 从DB中获取到了字典-------dictCode : ', dictCode, res)
         return Promise.resolve(res)
       } else {
         console.error('getDictItems error: : ', res)

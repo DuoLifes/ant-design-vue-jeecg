@@ -71,7 +71,7 @@
     watch:{
       root:{
         handler(val){
-          console.log("root-change",val)
+          // console.log("root-change",val)
         },
         deep:true
       },
@@ -178,7 +178,7 @@
         }
       },
       onChange(value){
-        console.log(value)
+        // console.log(value)
         if(!value){
           this.$emit('change', '');
         }else{
@@ -187,7 +187,7 @@
         this.treeValue = value
       },
       onSearch(value){
-        console.log(value)
+        // console.log(value)
       },
       getCurrTreeData(){
         return this.treeData

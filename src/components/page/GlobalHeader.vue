@@ -126,7 +126,9 @@
 
     //update-end--author:sunjianlei---date:20190508------for: 顶部导航栏过长时显示更多按钮-----
     mounted() {
+      // 给所有子菜单添加parentId
       this.getParentUrl()
+      // 根据url选中侧栏和顶栏菜单
       this.getRouter(this.cacheMenu,this.$route.path)
       window.addEventListener('scroll', this.handleScroll)
       //update-begin--author:sunjianlei---date:20190508------for: 顶部导航栏过长时显示更多按钮-----

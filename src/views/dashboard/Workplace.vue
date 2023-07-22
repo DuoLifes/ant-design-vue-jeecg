@@ -186,14 +186,14 @@
     created() {
       this.user = this.userInfo
       this.avatar = getFileAccessHttpUrl(this.userInfo.avatar)
-      console.log('this.avatar :'+ this.avatar)
+      // console.log('this.avatar :'+ this.avatar)
 
       getRoleList().then(res => {
-        console.log('workplace -> call getRoleList()', res)
+        // console.log('workplace -> call getRoleList()', res)
       })
 
       getServiceList().then(res => {
-        console.log('workplace -> call getServiceList()', res)
+        // console.log('workplace -> call getServiceList()', res)
       })
     },
     mounted() {

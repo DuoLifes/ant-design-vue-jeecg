@@ -243,7 +243,7 @@
         this.model = Object.assign({}, record);
 
         //根据菜单类型，动态展示页面字段
-        console.log('record: ',record)
+        // console.log('record: ',record)
         this.show = record.menuType==2?false:true;
         this.menuLabel = record.menuType==2?'按钮/权限':'菜单名称';
 

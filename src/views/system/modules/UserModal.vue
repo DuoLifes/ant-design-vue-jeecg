@@ -267,7 +267,7 @@
               let c = {label:item.name, value: item.id+""}
               return c;
             })
-            console.log('this.tenantsOptions: ',this.tenantsOptions)
+            // console.log('this.tenantsOptions: ',this.tenantsOptions)
           }
         })
       },
@@ -279,7 +279,7 @@
               let c = {label:item.roleName, value:item.id}
               return c;
             })
-            console.log('this.rolesOptions: ',this.rolesOptions)
+            // console.log('this.rolesOptions: ',this.rolesOptions)
           }
         });
       },

@@ -262,7 +262,7 @@
         return true
       },
       handleChange(info) {
-        console.log("--文件列表改变--")
+        // console.log("--文件列表改变--")
         if(!info.file.status && this.uploadGoOn === false){
           info.fileList.pop();
         }
@@ -314,7 +314,7 @@
       },
       handleDelete(file){
         //如有需要新增 删除逻辑
-        console.log(file)
+        // console.log(file)
       },
       handlePreview(file){
         if(this.fileType === FILE_TYPE_IMG){

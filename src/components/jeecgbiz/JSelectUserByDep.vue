@@ -120,7 +120,7 @@
         this.$refs.selectModal.showModal()
       },
       selectOK(rows) {
-        console.log("当前选中用户", rows)
+        // console.log("当前选中用户", rows)
         if (!rows) {
           this.storeVals = ''
           this.textVals = ''
