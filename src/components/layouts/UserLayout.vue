@@ -4,12 +4,12 @@
       <div class="top">
         <div class="header">
           <a href="/">
-            <img src="~@/assets/logo.svg" class="logo" alt="logo">
-            <span class="title">Jeecg Boot</span>
+            <img src="~@/assets/金易.jpg" class="logo" alt="logo">
+            <span class="title">城市生命线</span>
           </a>
         </div>
         <div class="desc">
-          Jeecg Boot 是中国最具影响力的 企业级 低代码平台
+          昆山市智慧城市管理平台
         </div>
       </div>
 
@@ -17,12 +17,12 @@
 
       <div class="footer">
         <div class="links">
-          <a href="http://doc.jeecg.com" target="_blank">帮助</a>
-          <a href="https://github.com/zhangdaiscott/jeecg-boot" target="_blank">隐私</a>
-          <a href="https://github.com/zhangdaiscott/jeecg-boot/blob/master/LICENSE" target="_blank">条款</a>
+          <a href="" target="_blank">帮助</a>
+          <a href="" target="_blank">隐私</a>
+          <a href="" target="_blank">条款</a>
         </div>
         <div class="copyright">
-          Copyright &copy; 2019 <a href="http://www.jeecg.com" target="_blank">JEECG开源社区</a> 出品
+          Copyright &copy; 2023 <a href="" target="_blank">Ant Design Pro</a> 出品
         </div>
       </div>
     </div>
@@ -104,7 +104,7 @@
             font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
             font-weight: 600;
             position: relative;
-            top: 2px;
+            top: -3px;
           }
         }
         .desc {
