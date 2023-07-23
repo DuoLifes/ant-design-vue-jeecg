@@ -66,7 +66,7 @@
               captcha: this.model.captcha,
               remember_me: rememberMe
             }
-            console.log("登录参数", loginParams)
+            // console.log("登录参数", loginParams)
             this.PhoneLogin(loginParams).then((res) => {
               this.$emit('success', res.result)
             }).catch((err) => {
